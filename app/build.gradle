@@ -77,7 +77,7 @@ dependencies {
     kapt deps.glide.compiler
 
     //circle image view
-    implementation deps.circleimageview.image
+    implementation deps.roundedimageview.image
 
     //kotlin
     implementation deps.kotlin.stdlib
