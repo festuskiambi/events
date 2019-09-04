@@ -10,5 +10,4 @@ class CategoryUseCaseImpl(private val categoryRepository: ICategoryRepository): 
     override suspend fun getCategories(): List<Category> {
         return categoryRepository.getCategories()
     }
-
 }

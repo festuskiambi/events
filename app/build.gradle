@@ -73,6 +73,7 @@ dependencies {
 
     //glide
     implementation deps.glide.runtime
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt deps.glide.compiler
 
     //circle image view
