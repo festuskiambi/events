@@ -7,5 +7,5 @@ import com.example.events.domain.entities.Category
  */
 interface ICategoryRepository {
 
-    suspend fun getCategories(): List<Category>
+    suspend fun getCategories(): List<Category>?
 }
