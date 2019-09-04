@@ -7,7 +7,7 @@ import com.example.events.domain.entities.Event
  */
 interface IEventRepository {
 
-    suspend fun getEvents(): List<Event>
+    suspend fun getEvents(): List<Event>?
 
-    suspend fun getEventById(id: String): Event
+    suspend fun getEventById(id: String): Event?
 }
