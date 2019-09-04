@@ -7,5 +7,5 @@ import com.example.events.domain.entities.Favorite
  */
 interface IFavoriteUseCase {
 
-    suspend fun getFavorites(): List<Favorite>
+    suspend fun getFavorites(): List<Favorite>?
 }
