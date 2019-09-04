@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="featured_events_lbl">Featured Events</string>
+    <string name="categories_lbl">Categories</string>
+    <string name="see_all_lbl">SEE ALL</string>
+    <string name="my_favorites_lbl">My Favorites</string>
+    <string name="more_events_lbl">More Events</string>
 </resources>
