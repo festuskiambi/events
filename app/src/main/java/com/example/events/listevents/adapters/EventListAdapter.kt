@@ -13,6 +13,10 @@ import com.example.events.R
 import com.example.events.common.EventDiffCallBack
 import com.example.events.domain.entities.Event
 import kotlinx.android.synthetic.main.item_event.view.*
+import android.os.Bundle
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
+import com.example.events.eventdetail.ui.EventDetailActivity
 
 
 /**
@@ -42,9 +46,15 @@ class EventListAdapter :
                 .load(event.imageUrl)
                 .into(holder.image)
 
-//            holder.favorite.setOnClickListener {
-//                viewModel.addBookMark(rockStar)
-//            }
+            holder.itemView.setOnClickListener {
+
+                val intent = Intent(holder.itemView.context, EventDetailActivity::class.java)
+
+                val bundle = Bundle()
+                bundle.putSerializable("value", event)
+
+                startActivity(holder.itemView.context, intent, bundle)
+            }
         }
     }
 

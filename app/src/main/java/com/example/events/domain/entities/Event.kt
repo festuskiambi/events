@@ -1,7 +1,7 @@
 package com.example.events.domain.entities
 
 import com.squareup.moshi.Json
-import java.util.*
+import java.io.Serializable
 
 data class Event(
 
@@ -37,4 +37,4 @@ data class Event(
 
     @Json(name = "categoryId")
     val categoryId: String? = null
-)
+):Serializable

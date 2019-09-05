@@ -1,6 +1,7 @@
 package com.example.events.domain.entities
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class TicketType(
 
@@ -21,4 +22,4 @@ data class TicketType(
 
     @Json(name = "title")
     val title: String? = null
-)
+): Serializable
