@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val factoryModule = module {
 
-    factory { FavoriteRepositoryImpl(get()) } as IFavoriteRepository
+    factory { FavoriteRepositoryImpl(get()) }
 
-    factory { FavoriteUseCaseImpl(get()) } as IFavoriteUseCase
+    factory { FavoriteUseCaseImpl(get()) }
 }

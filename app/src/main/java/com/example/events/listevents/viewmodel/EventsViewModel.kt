@@ -8,6 +8,7 @@ import com.example.events.domain.entities.Event
 import com.example.events.domain.entities.Favorite
 import com.example.events.domain.usecases.event.EventUseCaseImpl
 import com.example.events.domain.usecases.event.IEventUseCase
+import com.example.events.domain.usecases.favorite.FavoriteUseCaseImpl
 import com.example.events.domain.usecases.favorite.IFavoriteUseCase
 import com.example.rockstars.common.AppDispatchers
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 class EventsViewModel(
     private val dispatchers: AppDispatchers,
     private val eventsUseCase: EventUseCaseImpl,
-    private  val favororiteUseCase: IFavoriteUseCase
+    private  val favororiteUseCase: FavoriteUseCaseImpl
 
 ) : ViewModel() {
 
