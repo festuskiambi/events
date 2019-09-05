@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.events.R
 import com.example.events.common.EventDiffCallBack
 import com.example.events.domain.entities.Event
-import kotlinx.android.synthetic.main.item_event.view.*
 import kotlinx.android.synthetic.main.item_fetured_events.view.*
 
 /**
@@ -31,9 +31,13 @@ class FeaturedEventsListAdapter :
             val myOptions = RequestOptions()
                 .override(600, 200)
 
+            val radius = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
+
+
             Glide.with(holder.itemView.context)
                 .load(event.imageUrl)
-                .apply(myOptions)
+
+                .apply(myOptions.transform(RoundedCorners(radius)))
                 .into(holder.image)
 
 //            holder.favorite.setOnClickListener {
