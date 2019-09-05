@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.events.R
 import com.example.events.common.CategoryDiffCallBack
@@ -23,20 +24,23 @@ class CategoryListAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return CategoryViewHolder(
-            inflater.inflate(R.layout.item_event, parent, false)
+            inflater.inflate(R.layout.item_category, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        getItem(position).let { event ->
-            holder.title.text = event.title
+        getItem(position).let { category ->
+            holder.title.text = category.title
 
 
+            val radius =
+                holder.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius_fav)
             val myOptions = RequestOptions()
                 .override(600, 200)
 
             Glide.with(holder.itemView.context)
-                .load(event.imageUrl)
+                .load(category.imageUrl)
+                .apply(myOptions.transform(RoundedCorners(radius)))
                 .into(holder.image)
         }
     }

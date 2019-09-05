@@ -1,6 +1,7 @@
 package com.example.events
 
 import android.app.Application
+import com.example.events.di.categoryModule
 import com.example.events.di.eventModule
 import com.example.events.di.factoryModule
 import com.example.events.di.networkModule
@@ -19,7 +20,7 @@ class EventsApplication : Application() {
             // declare used Android context
             androidContext(this@EventsApplication)
             // declare modules
-            modules(listOf(networkModule, eventModule, factoryModule))
+            modules(listOf(networkModule, eventModule, factoryModule, categoryModule))
         }
 
     }

@@ -15,6 +15,7 @@ import com.example.events.R
 import com.example.events.listevents.adapters.FavoriteListAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import android.graphics.drawable.InsetDrawable
+import com.example.events.listevents.adapters.CategoryListAdapter
 
 
 class ListEventsActivity : AppCompatActivity() {
@@ -24,9 +25,7 @@ class ListEventsActivity : AppCompatActivity() {
     lateinit var eventsAdapter: EventListAdapter
     lateinit var featuredEventsAdapter: FeaturedEventsListAdapter
     lateinit var favoritesAdapter: FavoriteListAdapter
-
-    private val horizontalLayoutManagaer =
-        LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    lateinit var categoryAdapter : CategoryListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,11 +78,22 @@ class ListEventsActivity : AppCompatActivity() {
 
     private fun setupFeaturedEventsAdapter() {
         featuredEventsAdapter = FeaturedEventsListAdapter()
+
+        val horizontalLayoutManagaer =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         rv_featured_events.layoutManager = horizontalLayoutManagaer
         rv_featured_events.adapter = featuredEventsAdapter
     }
 
     private fun setupCategoriesAdapter() {
+        categoryAdapter = CategoryListAdapter()
+
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        rv_categories.layoutManager = layoutManager
+        rv_categories.adapter = categoryAdapter
     }
 
     private fun observeViewModel() {
@@ -107,6 +117,13 @@ class ListEventsActivity : AppCompatActivity() {
                     val favCount = "(${result.size})"
                     txt_favorites_count.text = favCount
                 }
+            }
+        )
+
+        viewModel.categoryList.observe(
+            this,
+            Observer { categoryList ->
+                categoryAdapter.submitList(categoryList)
             }
         )
     }

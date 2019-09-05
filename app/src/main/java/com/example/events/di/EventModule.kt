@@ -22,5 +22,5 @@ val eventModule = module {
 
     factory { EventUseCaseImpl(get() ) }
 
-    viewModel { EventsViewModel(get(), get(), get()) }
+    viewModel { EventsViewModel(get(), get(), get(), get()) }
 }
