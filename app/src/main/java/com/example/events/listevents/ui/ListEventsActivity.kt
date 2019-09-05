@@ -25,7 +25,7 @@ class ListEventsActivity : AppCompatActivity() {
     lateinit var featuredEventsAdapter: FeaturedEventsListAdapter
     lateinit var favoritesAdapter: FavoriteListAdapter
 
-    val horizontalLayoutManagaer =
+    private val horizontalLayoutManagaer =
         LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +35,11 @@ class ListEventsActivity : AppCompatActivity() {
         if (NetworkConnectivity(this).isConnected()) {
             initView()
         } else {
-            Toast.makeText(this, "Check your network connection and retry", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(
+                this,
+                "Check your network connection and retry",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
