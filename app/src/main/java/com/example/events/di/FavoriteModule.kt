@@ -1,6 +1,9 @@
 package com.example.events.di
 
+import com.example.events.data.FavoriteRepositoryImpl
+import com.example.events.domain.repository.IFavoriteRepository
 import com.example.events.domain.usecases.favorite.FavoriteUseCaseImpl
+import com.example.events.domain.usecases.favorite.IFavoriteUseCase
 import org.koin.dsl.module
 
 /**
@@ -9,5 +12,7 @@ import org.koin.dsl.module
 
 val factoryModule = module {
 
-    factory { FavoriteUseCaseImpl(get()) }
+    factory { FavoriteRepositoryImpl(get()) } as IFavoriteRepository
+
+    factory { FavoriteUseCaseImpl(get()) } as IFavoriteUseCase
 }
