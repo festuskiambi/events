@@ -45,6 +45,7 @@ class ListEventsActivity : AppCompatActivity() {
     private fun initView() {
         setupAdapters()
         observeViewModel()
+        toolbar.setTitle("Events & Travel")
     }
 
     private fun setupAdapters() {
