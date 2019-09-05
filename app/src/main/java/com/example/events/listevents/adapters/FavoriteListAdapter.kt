@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.events.R
 import com.example.events.common.EventDiffCallBack
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.item_favorite_event.view.*
  * Created by Festus Kiambi on 9/5/19.
  */
 
-class FavoriteListAdapter  :
+class FavoriteListAdapter :
     ListAdapter<Event, FavoriteListAdapter.FavoriteViewHolder>(EventDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -33,11 +34,14 @@ class FavoriteListAdapter  :
             holder.title.text = event.title
             holder.location.text = event.location
 
+            val radius =
+                holder.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius_fav)
             val myOptions = RequestOptions()
                 .override(600, 200)
 
             Glide.with(holder.itemView.context)
                 .load(event.imageUrl)
+                .apply(myOptions.transform(RoundedCorners(radius)))
                 .into(holder.image)
 
 //            holder.favorite.setOnClickListener {
