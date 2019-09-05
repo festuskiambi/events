@@ -13,7 +13,6 @@ import com.example.events.R
 import com.example.events.common.EventDiffCallBack
 import com.example.events.domain.entities.Event
 import kotlinx.android.synthetic.main.item_event.view.*
-import android.os.Bundle
 import android.content.Intent
 import androidx.core.content.ContextCompat.startActivity
 import com.example.events.eventdetail.ui.EventDetailActivity
@@ -23,16 +22,16 @@ import com.example.events.eventdetail.ui.EventDetailActivity
  * Created by Festus Kiambi on 9/4/19.
  */
 class EventListAdapter :
-    ListAdapter<Event, EventListAdapter.NoteViewHolder>(EventDiffCallBack()) {
+    ListAdapter<Event, EventListAdapter.EventViewHolder>(EventDiffCallBack()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return NoteViewHolder(
+        return EventViewHolder(
             inflater.inflate(R.layout.item_event, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         getItem(position).let { event ->
             val date = "${event.date!!.take(3)}\n${event.date.drop(4)}"
             holder.title.text = event.title
@@ -50,15 +49,16 @@ class EventListAdapter :
 
                 val intent = Intent(holder.itemView.context, EventDetailActivity::class.java)
 
-                val bundle = Bundle()
-                bundle.putSerializable("value", event)
+                intent.putExtra("value", event)
+                intent.putExtra("st","st")
 
-                startActivity(holder.itemView.context, intent, bundle)
+
+                startActivity(holder.itemView.context,intent,null)
             }
         }
     }
 
-    class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.txt_event_title
         val location: TextView = view.txt_event_location
         val image: ImageView = view.iv_event_image
