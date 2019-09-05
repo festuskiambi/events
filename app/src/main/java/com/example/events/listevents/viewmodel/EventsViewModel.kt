@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.events.domain.entities.Category
 import com.example.events.domain.entities.Event
 import com.example.events.domain.entities.Favorite
+import com.example.events.domain.usecases.category.CategoryUseCaseImpl
 import com.example.events.domain.usecases.event.EventUseCaseImpl
 import com.example.events.domain.usecases.event.IEventUseCase
 import com.example.events.domain.usecases.favorite.FavoriteUseCaseImpl
@@ -19,7 +21,9 @@ import kotlinx.coroutines.launch
 class EventsViewModel(
     private val dispatchers: AppDispatchers,
     private val eventsUseCase: EventUseCaseImpl,
-    private  val favororiteUseCase: FavoriteUseCaseImpl
+    private  val favororiteUseCase: FavoriteUseCaseImpl,
+    private val categoryUseCase: CategoryUseCaseImpl
+
 
 ) : ViewModel() {
 
@@ -29,9 +33,19 @@ class EventsViewModel(
     private val favoriteState = MutableLiveData<Favorite>()
     val favorite: LiveData<Favorite> get() = favoriteState
 
+    private val categoryListState = MutableLiveData <List<Category>>()
+    val categoryList : LiveData<List<Category>> get()= categoryListState
+
     init {
         getEventsList()
         getFavoriteEventsList()
+        getCategoryList()
+    }
+
+    private fun getCategoryList() = viewModelScope.launch(dispatchers.main) {
+        val result = categoryUseCase.getCategories()
+        categoryListState.value = result
+
     }
 
     private fun getFavoriteEventsList()=  viewModelScope.launch(dispatchers.main) {
