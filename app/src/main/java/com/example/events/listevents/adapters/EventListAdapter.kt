@@ -38,22 +38,14 @@ class EventListAdapter :
             holder.location.text = event.location
             holder.date.text = date
 
-            val myOptions = RequestOptions()
-                .override(600, 200)
-
             Glide.with(holder.itemView.context)
                 .load(event.imageUrl)
                 .into(holder.image)
 
             holder.itemView.setOnClickListener {
-
                 val intent = Intent(holder.itemView.context, EventDetailActivity::class.java)
-
                 intent.putExtra("value", event)
-                intent.putExtra("st","st")
-
-
-                startActivity(holder.itemView.context,intent,null)
+                startActivity(holder.itemView.context, intent, null)
             }
         }
     }

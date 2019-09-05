@@ -14,20 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".eventdetail.ui.EventDetailActivity"></activity>
-        <activity android:name=".listevents.ui.ListEventsActivity">
+        <activity
+            android:name=".listevents.ui.ListEventsActivity"
+            android:label="Events  Travel">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".common.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
