@@ -7,7 +7,7 @@
     android:layout_height="100dp">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -18,13 +18,14 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic[5]" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         tools:text="Music"
+        android:textStyle="bold"
         android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_category"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
