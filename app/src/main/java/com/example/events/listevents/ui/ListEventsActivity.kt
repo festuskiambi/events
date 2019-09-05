@@ -101,7 +101,8 @@ class ListEventsActivity : AppCompatActivity() {
                 val result = favorite.events
                 if (!result.isNullOrEmpty()) {
                     favoritesAdapter.submitList(result.subList(0, 3))
-
+                    val favCount = "(${result.size})"
+                    txt_favorites_count.text = favCount
                 }
             }
         )
