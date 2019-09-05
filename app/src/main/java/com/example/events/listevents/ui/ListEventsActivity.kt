@@ -69,7 +69,7 @@ class ListEventsActivity : AppCompatActivity() {
         val inset = resources.getDimensionPixelSize(com.example.events.R.dimen.decorator_dimen)
         val insetDivider = InsetDrawable(divider, inset, 0, 0, 0)
         a.recycle()
-
+      
         val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         itemDecoration.setDrawable(insetDivider)
 
@@ -126,5 +126,6 @@ class ListEventsActivity : AppCompatActivity() {
                 categoryAdapter.submitList(categoryList)
             }
         )
+
     }
 }

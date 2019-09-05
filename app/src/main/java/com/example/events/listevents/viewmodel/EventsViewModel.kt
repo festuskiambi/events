@@ -24,6 +24,7 @@ class EventsViewModel(
     private  val favororiteUseCase: FavoriteUseCaseImpl,
     private val categoryUseCase: CategoryUseCaseImpl
 
+
 ) : ViewModel() {
 
     private val eventListState = MutableLiveData<List<Event>>()
@@ -44,6 +45,7 @@ class EventsViewModel(
     private fun getCategoryList() = viewModelScope.launch(dispatchers.main) {
         val result = categoryUseCase.getCategories()
         categoryListState.value = result
+
     }
 
     private fun getFavoriteEventsList()=  viewModelScope.launch(dispatchers.main) {
