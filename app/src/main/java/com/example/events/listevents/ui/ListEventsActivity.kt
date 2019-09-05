@@ -13,6 +13,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.events.R
 import com.example.events.listevents.adapters.FavoriteListAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
+import android.graphics.drawable.InsetDrawable
 
 
 class ListEventsActivity : AppCompatActivity() {
@@ -22,6 +24,9 @@ class ListEventsActivity : AppCompatActivity() {
     lateinit var eventsAdapter: EventListAdapter
     lateinit var featuredEventsAdapter: FeaturedEventsListAdapter
     lateinit var favoritesAdapter: FavoriteListAdapter
+
+    val horizontalLayoutManagaer =
+        LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,18 +46,41 @@ class ListEventsActivity : AppCompatActivity() {
     }
 
     private fun setupAdapters() {
+        setupEventsAdapter()
+        setupFavoritesAdapter()
+        setupFeaturedEventsAdapter()
+        setupCategoriesAdapter()
+    }
+
+    private fun setupEventsAdapter() {
         eventsAdapter = EventListAdapter()
         rv_more_events.adapter = eventsAdapter
+    }
 
-        val horizontalLayoutManagaer =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    private fun setupFavoritesAdapter() {
+        favoritesAdapter = FavoriteListAdapter()
+        rv_favorites.adapter = favoritesAdapter
 
+        val ATTRS = intArrayOf(android.R.attr.listDivider)
+        val a = this.obtainStyledAttributes(ATTRS)
+        val divider = a.getDrawable(0)
+        val inset = resources.getDimensionPixelSize(com.example.events.R.dimen.decorator_dimen)
+        val insetDivider = InsetDrawable(divider, inset, 0, 0, 0)
+        a.recycle()
+
+        val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        itemDecoration.setDrawable(insetDivider)
+
+        rv_favorites.addItemDecoration(itemDecoration)
+    }
+
+    private fun setupFeaturedEventsAdapter() {
         featuredEventsAdapter = FeaturedEventsListAdapter()
         rv_featured_events.layoutManager = horizontalLayoutManagaer
         rv_featured_events.adapter = featuredEventsAdapter
+    }
 
-        favoritesAdapter = FavoriteListAdapter()
-        rv_favorites.adapter = favoritesAdapter
+    private fun setupCategoriesAdapter() {
     }
 
     private fun observeViewModel() {
@@ -72,7 +100,7 @@ class ListEventsActivity : AppCompatActivity() {
             Observer { favorite ->
                 val result = favorite.events
                 if (!result.isNullOrEmpty()) {
-                    favoritesAdapter.submitList(result.subList(0,3))
+                    favoritesAdapter.submitList(result.subList(0, 3))
 
                 }
             }

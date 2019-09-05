@@ -28,15 +28,14 @@ class FeaturedEventsListAdapter :
             holder.location.text = event.location
             holder.date.text = date
 
+            val radius = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
             val myOptions = RequestOptions()
                 .override(600, 200)
 
-            val radius = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
 
 
             Glide.with(holder.itemView.context)
                 .load(event.imageUrl)
-
                 .apply(myOptions.transform(RoundedCorners(radius)))
                 .into(holder.image)
 
