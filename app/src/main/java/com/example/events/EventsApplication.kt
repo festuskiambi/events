@@ -19,7 +19,7 @@ class EventsApplication : Application() {
             // declare used Android context
             androidContext(this@EventsApplication)
             // declare modules
-            modules(listOf(networkModule, factoryModule, eventModule))
+            modules(listOf(networkModule, eventModule, factoryModule))
         }
 
     }

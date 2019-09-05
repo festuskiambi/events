@@ -29,6 +29,7 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/search_field_bg"
                 android:queryHint="Search events"
+                android:iconifiedByDefault="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,9 +66,11 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:cardCornerRadius="15dp">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_featured_events"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </androidx.cardview.widget.CardView>
@@ -111,6 +114,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/my_favorites_lbl"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
@@ -161,6 +165,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_more_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -169,7 +174,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

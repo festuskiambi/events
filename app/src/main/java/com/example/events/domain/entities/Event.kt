@@ -6,7 +6,7 @@ import java.util.*
 data class Event(
 
     @Json(name = "date")
-    val date: Date? = null,
+    val date: String? = null,
 
     @Json(name = "createdAt")
     val createdAt: String? = null,
