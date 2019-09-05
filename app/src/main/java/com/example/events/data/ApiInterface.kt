@@ -18,8 +18,8 @@ interface ApiInterface {
     @GET("events/{id}")
     suspend fun getEventById(@Path("id") id: String): Response<Event>
 
-    @GET("favorites/{id}")
-    suspend fun getFavoritByUserId(@Path("id") id: String): Response<Favorite>
+    @GET("favovites/{id}")
+    suspend fun getFavoritByUserId(@Path("id") id: String): Favorite
 
     @GET("categories")
     suspend fun getCategories(): Response<List<Category>>

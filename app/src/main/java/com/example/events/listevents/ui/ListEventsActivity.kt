@@ -12,14 +12,16 @@ import kotlinx.android.synthetic.main.activity_list_events.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.events.R
+import com.example.events.listevents.adapters.FavoriteListAdapter
 
 
 class ListEventsActivity : AppCompatActivity() {
 
-
     private val viewModel: EventsViewModel by viewModel()
+
     lateinit var eventsAdapter: EventListAdapter
     lateinit var featuredEventsAdapter: FeaturedEventsListAdapter
+    lateinit var favoritesAdapter: FavoriteListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +48,11 @@ class ListEventsActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         featuredEventsAdapter = FeaturedEventsListAdapter()
-
         rv_featured_events.layoutManager = horizontalLayoutManagaer
         rv_featured_events.adapter = featuredEventsAdapter
 
-
+        favoritesAdapter = FavoriteListAdapter()
+        rv_favorites.adapter = favoritesAdapter
     }
 
     private fun observeViewModel() {
@@ -62,6 +64,17 @@ class ListEventsActivity : AppCompatActivity() {
                 val featuredEvents = eventList.filter { event -> event.featured == true }
 
                 featuredEventsAdapter.submitList(featuredEvents)
+            }
+        )
+
+        viewModel.favorite.observe(
+            this,
+            Observer { favorite ->
+                val result = favorite.events
+                if (!result.isNullOrEmpty()) {
+                    favoritesAdapter.submitList(result.subList(0,3))
+
+                }
             }
         )
     }

@@ -8,6 +8,6 @@ import com.example.events.domain.repository.IFavoriteRepository
  */
 class FavoriteRepositoryImpl(private val apiInterface: ApiInterface): IFavoriteRepository {
     override suspend fun getFavoriteByUserId(userId: String): Favorite? {
-        return apiInterface.getFavoritByUserId(userId).body()
+        return apiInterface.getFavoritByUserId(userId)
     }
 }
