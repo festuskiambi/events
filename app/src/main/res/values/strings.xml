@@ -9,4 +9,12 @@
     <string name="my_favorites_lbl">My Favorites</string>
     <string name="more_events_lbl">More Events</string>
     <string name="_8942">⋮</string>
+    <string name="safaricom_prepaid_lbl">Safaricom Prepaid</string>
+    <string name="account_lbl">Account</string>
+    <string name="total_lbl">Total</string>
+    <string name="pay_with_lbl">PAY WITH</string>
+    <string name="card_lbl">CARD</string>
+    <string name="m_pesa_lbl">M-PESA</string>
+    <string name="continue_lbl">continue</string>
+    <string name="add_new_card_lbl">Add new card</string>
 </resources>
