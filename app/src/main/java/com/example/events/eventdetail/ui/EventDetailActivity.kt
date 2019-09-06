@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.events.payment.ui.PaymentActivity
 
 
+
 class EventDetailActivity : AppCompatActivity() {
 
     private lateinit var event: Event
