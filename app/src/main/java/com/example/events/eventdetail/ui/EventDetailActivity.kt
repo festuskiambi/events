@@ -1,5 +1,6 @@
 package com.example.events.eventdetail.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -9,6 +10,8 @@ import com.example.events.eventdetail.adapters.TickectTypeListAdapter
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import kotlinx.android.synthetic.main.content_event_details.*
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.events.payment.ui.PaymentActivity
+
 
 
 class EventDetailActivity : AppCompatActivity() {
@@ -26,6 +29,11 @@ class EventDetailActivity : AppCompatActivity() {
         event = intent.getSerializableExtra("value") as Event
         populateViewWithEventDetails()
         setupTicketTypeAdapter()
+
+        btn_proceed_to_buy.setOnClickListener {
+            intent = Intent(this, PaymentActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun populateViewWithEventDetails() {
