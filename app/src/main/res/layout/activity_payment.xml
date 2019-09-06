@@ -21,8 +21,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/colorPrimary"
-
-        android:background=""
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5013193" />
+                app:layout_constraintGuide_percent="0.53" />
 
             <View
                 android:layout_width="0dp"
@@ -115,7 +113,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline9"
-                tools:text="Tinga Tinga Tales The Musical 2018" />
+                android:text="@string/title_lbl" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -128,7 +126,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline9"
-                tools:text="KES 5000" />
+                android:text="@string/kes_5000_lbl" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -153,23 +151,24 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rb_card"
             android:layout_width="130dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/radio_button_bg"
             android:button="@android:color/transparent"
             android:checked="true"
             android:gravity="center"
-            android:background="@drawable/radio_button_bg"
             android:text="@string/card_lbl"
             android:textColor="@color/colorPrimary" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rb_mpesa"
             android:layout_width="130dp"
+            android:gravity="center"
             android:layout_height="40dp"
             android:button="@android:color/transparent"
-            android:checked="true"
+            android:background="@drawable/radio_button_bg"
             android:text="@string/m_pesa_lbl"
             android:textColor="@color/colorPrimary" />
     </RadioGroup>
